@@ -77,7 +77,8 @@ services:
           echo ">>> Installing extra pip packages from requirements.txt..."
           pip3 install --no-cache-dir --break-system-packages -r /mnt/extra-addons/requirements.txt
         fi
-        chown -R odoo:odoo /var/lib/odoo /mnt/extra-addons /etc/odoo
+        chown -R odoo:odoo /var/lib/odoo /etc/odoo
+        chmod -R u+rwX,go+rwX /mnt/extra-addons /var/lib/odoo /etc/odoo
         if [ ! -f /etc/odoo/odoo.conf ]; then
           cat > /etc/odoo/odoo.conf << EOF
         [options]
